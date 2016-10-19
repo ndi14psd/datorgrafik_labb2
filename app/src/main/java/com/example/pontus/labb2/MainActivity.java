@@ -98,7 +98,7 @@ class CGRenderer implements GLSurfaceView.Renderer {
 
         GLES20.glEnable(GLES20.GL_DEPTH_TEST);
 
-        //mCube = new Cube();
+        mCube = new Cube();
         cubeTriangleStrip = new CubeTriangleStrip();
     }
 
@@ -120,14 +120,15 @@ class CGRenderer implements GLSurfaceView.Renderer {
         Matrix.setRotateM(mRotationMatrix, 0, xAngle, 0, 1.0f, 0);
         Matrix.multiplyMM(CTM, 0, CTM, 0, mRotationMatrix, 0);
 
-        //Matrix.setRotateM(mRotationMatrix, 0, yAngle, 1.0f, 0, 0);
-       // Matrix.multiplyMM(CTM, 0, CTM, 0, mRotationMatrix, 0);
+        Matrix.setRotateM(mRotationMatrix, 0, yAngle, 1.0f, 0, 0);
+        Matrix.multiplyMM(CTM, 0, CTM, 0, mRotationMatrix, 0);
 
         Matrix.translateM(CTM, 0, CTM, 0, -0.5f, -0.5f, 0.5f);
 
         // Draw shape
         //mCube.draw(CTM);
         cubeTriangleStrip.draw(CTM);
+
     }
 
     @Override

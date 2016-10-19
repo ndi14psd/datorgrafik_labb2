@@ -1,19 +1,14 @@
 package com.example.pontus.labb2;
 
-import android.graphics.Color;
-import android.opengl.GLES20;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static android.opengl.GLES20.*;
 
-/**
- * Created by ndi14psd on 2016-10-13.
- */
 public class Cube {
 
-    private final static List<Triangle> TRIANGLES = new ArrayList<>();
+    private final List<Triangle> triangles = new ArrayList<>();
 
     public Cube() {
         int program = glCreateProgram();
@@ -28,79 +23,78 @@ public class Cube {
     }
 
     private void initializeTriangles(final int program) {
-        TRIANGLES.add(new Triangle(Colors.RED,
+        triangles.add(new Triangle(Colors.RED,
                 new float[] {
                     0f, 0f, 0f, 1f,
                     0f, 1f, 0f, 1f,
                     1f, 0f, 0f, 1f
                 }, program));
-        TRIANGLES.add(new Triangle(Colors.DARK_GREEN,
+        triangles.add(new Triangle(Colors.DARK_GREEN,
                 new float[] {
                         1f, 1f, 0f, 1f,
                         0f, 1f, 0f, 1f,
                         1f, 0f, 0f, 1f
                 }, program));
 
-        TRIANGLES.add(new Triangle(Colors.BLUE,
+        triangles.add(new Triangle(Colors.BLUE,
                 new float[] {
                         0f, 0f, -1f, 1f,
                         0f, 1f, -1f, 1f,
                         1f, 0f, -1f, 1f,
-                        1232f,
                 }, program));
-        TRIANGLES.add(new Triangle(Colors.PURPLE,
+        triangles.add(new Triangle(Colors.PURPLE,
                 new float[] {
                         1f, 1f, -1f, 1f,
                         0f, 1f, -1f, 1f,
                         1f, 0f, -1f, 1f
                 }, program));
 
-        TRIANGLES.add(new Triangle(Colors.YELLOW,
+        triangles.add(new Triangle(Colors.YELLOW,
                 new float[] {
                         0f, 0f, 0f, 1f,
                         0f, 0f, -1f, 1f,
                         1f, 0f, 0f, 1f
                 }, program));
-        TRIANGLES.add(new Triangle(Colors.DARK_GREEN,
+        triangles.add(new Triangle(Colors.DARK_GREEN,
                 new float[] {
                         0f, 0f, -1f, 1f,
                         1f, 0f, -1f, 1f,
                         1f, 0f, 0f, 1f
                 }, program));
 
-        TRIANGLES.add(new Triangle(Colors.WHITE,
+        triangles.add(new Triangle(Colors.WHITE,
                 new float[] {
                         0f, 1f, 0f, 1f,
                         0f, 1f, -1f, 1f,
                         1f, 1f, 0f, 1f
                 }, program));
-        TRIANGLES.add(new Triangle(Colors.BLUE,
+        triangles.add(new Triangle(Colors.BLUE,
                 new float[] {
                         1f, 1f, -1f, 1f,
                         0f, 1f, -1f, 1f,
                         1f, 1f, 0f, 1f
                 }, program));
 
-        TRIANGLES.add(new Triangle(Colors.GREEN,
+        triangles.add(new Triangle(Colors.GREEN,
                 new float[] {
                         1f, 0f, 0f, 1f,
                         1f, 0f, -1f, 1f,
                         1f, 1f, 0f, 1f
                 },program));
-        TRIANGLES.add(new Triangle(Colors.YELLOW,
+        triangles.add(new Triangle(Colors.YELLOW,
                 new float[] {
                         1f, 1f, -1f, 1f,
                         1f, 1f, 0f, 1f,
                         1f, 0f, -1f, 1f
                 },program));
 
-        TRIANGLES.add(new Triangle(Colors.LIGHT_GREEN,
+        triangles.add(new Triangle(Colors.LIGHT_GREEN,
                 new float[] {
                         0f, 0f, 0f, 1f,
                         0f, 1f, 0f, 1f,
                         0f, 0f, -1f, 1f
                 },program));
-        TRIANGLES.add(new Triangle(Colors.RED,
+        triangles.add(new Triangle(Colors.RED,
                 new float[] {
                         0f, 1f, -1f, 1f,
                         0f, 1f, 0f, 1f,
@@ -109,7 +103,7 @@ public class Cube {
     }
 
     public void draw(float[] mvpMatrix) {
-        for (Triangle t : TRIANGLES)
+        for (Triangle t : triangles)
             t.draw(mvpMatrix);
     }
 
